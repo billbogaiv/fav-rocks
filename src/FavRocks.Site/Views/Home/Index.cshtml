@@ -102,6 +102,7 @@
             {
                 <div class="row">
                     Row @(x):
+                    <br />
                     @for (var y = 0; y < Model.ImageWidth; y++)
                     {
                         var name = $"pixels[{x}][{y}]";
@@ -147,9 +148,11 @@
                                     <span class="pixel-color-container-ui" style="background-color: #@(pixel);" title="@(pixel)"></span>
                                 </label>
                             }
+                            <br />
                         </span>
                     }
                 </div>
+                <br />
             }
         </div>
         <div id="notice">

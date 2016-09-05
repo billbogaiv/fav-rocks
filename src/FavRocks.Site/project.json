@@ -49,6 +49,7 @@
     },
     "publishOptions": {
         "include": [
+            "instructions.md",
             "wwwroot",
             "Views",
             "appsettings.json",

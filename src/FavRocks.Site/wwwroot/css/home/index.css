@@ -40,8 +40,7 @@ button.color-selector-ui {
     }
 
 .color-selector, .pixel-color-container-selector {
-    clip: rect(0, 0, 0, 0);
-    position: absolute;
+    display: none;
 }
 
     .color-selector:checked + .color-selector-ui {
