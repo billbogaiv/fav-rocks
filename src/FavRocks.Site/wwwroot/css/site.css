@@ -1,0 +1,82 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+#about {
+    float: right;
+    font-size: 0.75em;
+}
+
+body {
+    background-color: #3f3f3f;
+    counter-reset: instructional-wizard;
+    font-family: sans-serif;
+    overflow-x: hidden;
+    margin: 0.5em;
+    max-width: 1440px;
+}
+
+body, a {
+    color: #dcdccc;
+}
+
+.button {
+    background-color: #8fb28f;
+    cursor: pointer;
+    font-size: 1.25em;
+}
+
+.clearfix {
+    clear: both;
+}
+
+footer, footer a {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.link {
+    cursor: pointer;
+}
+
+#notice {
+    font-size: 0.75em;
+    margin-top: 1em;
+}
+
+#tagline {
+    font-style: italic;
+}
+
+#title-container {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#title {
+    font-family: monospace;
+    font-size: 1.5em;
+    text-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+}
+
+#title, #tagline {
+    color: #dcdccc;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 80%;
+    }
+}
+
+@media (min-width: 1440px) {
+    body {
+        box-sizing: content-box;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+    }
+}

@@ -1,0 +1,165 @@
+﻿@model Home.IndexResponse
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+@section styles {
+    <environment names="Development">
+        <link rel="stylesheet" href="~/css/home/index.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/css/home/index.min.css" asp-append-version="true" />
+    </environment>
+    <style>
+        .pixel {
+            width: @((1.0 / Model.ImageWidth) * 100)%;
+        }
+
+        .row {
+            height: @((1.0 / Model.ImageHeight) * 100)%;
+        }
+
+        .color-selector.color1 + .color-selector-ui {
+            background-color: #@Model.Color1;
+            color: #@Model.Color1;
+        }
+
+        .color-selector.color2 + .color-selector-ui {
+            background-color: #@Model.Color2;
+            color: #@Model.Color2;
+        }
+
+        .color-selector.color3 + .color-selector-ui {
+            background-color: #@Model.Color3;
+            color: #@Model.Color3;
+        }
+
+        .color-selector.color4 + .color-selector-ui {
+            background-color: #@Model.Color4;
+            color: #@Model.Color4;
+        }
+
+        .color-selector.color5 + .color-selector-ui {
+            background-color: #@Model.Color5;
+            color: #@Model.Color5;
+        }
+
+        .pixel .pixel-color-container.color1 > .pixel-color-container-selector[type="radio"]:checked + .pixel-color-container-ui {
+            background-color: #@Model.Color1;
+        }
+
+        .pixel .pixel-color-container.color2 > .pixel-color-container-selector[type="radio"]:checked + .pixel-color-container-ui {
+            background-color: #@Model.Color2;
+        }
+
+        .pixel .pixel-color-container.color3 > .pixel-color-container-selector[type="radio"]:checked + .pixel-color-container-ui {
+            background-color: #@Model.Color3;
+        }
+
+        .pixel .pixel-color-container.color4 > .pixel-color-container-selector[type="radio"]:checked + .pixel-color-container-ui {
+            background-color: #@Model.Color4;
+        }
+
+        .pixel .pixel-color-container.color5 > .pixel-color-container-selector[type="radio"]:checked + .pixel-color-container-ui {
+            background-color: #@Model.Color5;
+        }
+    </style>
+}
+
+<ul class="instructional-wizard">
+    <li class="instructional-wizard-step">Select colors below.</li>
+    <li class="instructional-wizard-step">Select cells in the grid.</li>
+    <li class="instructional-wizard-step">Remove mistakes.</li>
+    <li class="instructional-wizard-step">Explore additional colors.</li>
+    <li class="instructional-wizard-step">Download your creation!</li>
+</ul>
+
+<form id="color-selector" method="post">
+    <input type="hidden" name="color1" value="@Model.Color1" />
+    <input type="hidden" name="color2" value="@Model.Color2" />
+    <input type="hidden" name="color3" value="@Model.Color3" />
+    <input type="hidden" name="color4" value="@Model.Color4" />
+    <input type="hidden" name="color5" value="@Model.Color5" />
+    <input type="radio" id="color1" class="color-selector color1" name="color" checked />
+    <label class="color-selector-ui" for="color1" title="#@Model.Color1">#@Model.Color1</label>
+    <input type="radio" id="color2" class="color-selector color2" name="color" />
+    <label class="color-selector-ui" for="color2" title="#@Model.Color2">#@Model.Color2</label>
+    <input type="radio" id="color3" class="color-selector color3" name="color" />
+    <label class="color-selector-ui" for="color3" title="#@Model.Color3">#@Model.Color3</label>
+    <input type="radio" id="color4" class="color-selector color4" name="color" />
+    <label class="color-selector-ui" for="color4" title="#@Model.Color4">#@Model.Color4</label>
+    <input type="radio" id="color5" class="color-selector color5" name="color" />
+    <label class="color-selector-ui" for="color5" title="#@Model.Color5">#@Model.Color5</label>
+    <input type="radio" id="color-transparent" class="color-selector transparent" name="color" />
+    <label class="color-selector-ui" for="color-transparent" title="Transparent"></label>
+
+    <button class="color-selector-ui" name="action" value="more" title="Explore additional color swatches">🌐</button>
+
+    <div id="pixel-grid">
+        <div class="pixels">
+            @for (var x = 0; x < Model.ImageHeight; x++)
+            {
+                <div class="row">
+                    Row @(x):
+                    @for (var y = 0; y < Model.ImageWidth; y++)
+                    {
+                        var name = $"pixels[{x}][{y}]";
+                        var pixel = Model.Pixels[x][y];
+
+                        <span class="pixel">
+                            Column @(y):
+                            <label class="pixel-color-container transparent">
+                                Transparent
+                                <input type="radio" class="pixel-color-container-selector" name="@(name)" value="transparent" checked="@(pixel == "transparent" ? "checked" : null)" />
+                                <span class="pixel-color-container-ui"></span>
+                            </label>
+                            <label class="pixel-color-container color1">
+                                @Model.Color1
+                                <input type="radio" class="pixel-color-container-selector" name="@(name)" value="@Model.Color1" />
+                                <span class="pixel-color-container-ui"></span>
+                            </label>
+                            <label class="pixel-color-container color2">
+                                @Model.Color2
+                                <input type="radio" class="pixel-color-container-selector" name="@(name)" value="@Model.Color2" />
+                                <span class="pixel-color-container-ui"></span>
+                            </label>
+                            <label class="pixel-color-container color3">
+                                @Model.Color3
+                                <input type="radio" class="pixel-color-container-selector" name="@(name)" value="@Model.Color3" />
+                                <span class="pixel-color-container-ui"></span>
+                            </label>
+                            <label class="pixel-color-container color4">
+                                @Model.Color4
+                                <input type="radio" class="pixel-color-container-selector" name="@(name)" value="@Model.Color4" />
+                                <span class="pixel-color-container-ui"></span>
+                            </label>
+                            <label class="pixel-color-container color5">
+                                @Model.Color5
+                                <input type="radio" class="pixel-color-container-selector" name="@(name)" value="@Model.Color5" />
+                                <span class="pixel-color-container-ui"></span>
+                            </label>
+                            @if (pixel != "transparent")
+                            {
+                                <label class="pixel-color-container custom">
+                                    @pixel
+                                    <input type="radio" class="pixel-color-container-selector" name="@(name)" value="@(pixel)" checked="@(pixel != "transparent" ? "checked" : null)" />
+                                    <span class="pixel-color-container-ui" style="background-color: #@(pixel);" title="@(pixel)"></span>
+                                </label>
+                            }
+                        </span>
+                    }
+                </div>
+            }
+        </div>
+        <div id="notice">
+            Grid enlarged to show detail. Download image size is @(Model.ImageWidth)x@(Model.ImageHeight) px.
+        </div>
+        <div id="actions">
+            <a asp-action="Index" asp-controller="Reset" id="reset">Reset</a>
+            &nbsp;
+            <button id="download" class="button">Download</button>
+        </div>
+    </div>
+</form>
+<div class="clearfix"></div>

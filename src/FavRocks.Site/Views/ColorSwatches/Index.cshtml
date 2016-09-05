@@ -1,0 +1,71 @@
+﻿@model ColorSwatch.IndexResponse
+
+@{
+    ViewData["Title"] = "Color swatch selector";
+}
+
+@section styles {
+    <environment names="Development">
+        <link rel="stylesheet" href="~/css/color-swatches/index.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/css/color-swatches/index.min.css" asp-append-version="true" />
+    </environment>
+}
+
+<ul class="swatch-container">
+    @foreach (var color in Model.ColorSwatches)
+    {
+        <li>
+            <a asp-controller="Home" asp-route-color1="@color.Color1" asp-route-color2="@color.Color2" asp-route-color3="@color.Color3" asp-route-color4="@color.Color4" asp-route-color5="@color.Color5">
+                <ul class="swatch">
+                    <li class="color" style="background-color: #@(color.Color1); color: #@(color.Color1);">#@(color.Color1)</li>
+                    <li class="color" style="background-color: #@(color.Color2); color: #@(color.Color2);">#@(color.Color2)</li>
+                    <li class="color" style="background-color: #@(color.Color3); color: #@(color.Color3);">#@(color.Color3)</li>
+                    <li class="color" style="background-color: #@(color.Color4); color: #@(color.Color4);">#@(color.Color4)</li>
+                    <li class="color" style="background-color: #@(color.Color5); color: #@(color.Color5);">#@(color.Color5)</li>
+                </ul>
+                <div class="title">@color.Name</div>
+            </a>
+        </li>
+    }
+</ul>
+<hr />
+<h2>Custom color selection:</h2>
+<form method="post">
+    <ul id="custom-colors">
+        <li class="custom-color">
+            <label>
+                1<sup>st</sup> color
+                <input type="color" class="color-picker" name="color1" placeholder="#000000" value="#@Model.Color1" />
+            </label>
+        </li>
+        <li class="custom-color">
+            <label>
+                2<sup>nd</sup> color
+                <input type="color" class="color-picker" name="color2" placeholder="#000000" value="#@Model.Color2" />
+            </label>
+        </li>
+        <li class="custom-color">
+            <label>
+                3<sup>rd</sup> color
+                <input type="color" class="color-picker" name="color3" placeholder="#000000" value="#@Model.Color3" />
+            </label>
+        </li>
+        <li class="custom-color">
+            <label>
+                4<sup>th</sup> color
+                <input type="color" class="color-picker" name="color4" placeholder="#000000" value="#@Model.Color4" />
+            </label>
+        </li>
+        <li class="custom-color">
+            <label>
+                5<sup>th</sup> color
+                <input type="color" class="color-picker" name="color5" placeholder="#000000" value="#@Model.Color5" />
+            </label>
+        </li>
+        <li class="custom-color">
+            <button class="button">Submit</button>
+        </li>
+    </ul>
+</form>

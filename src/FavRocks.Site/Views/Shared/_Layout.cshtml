@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]–FAV Rocks</title>
+
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    <environment names="Development">
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <header>
+        <div id="title-container">
+            <a id="title" asp-controller="Home" asp-action="Index">FAV \m/</a>
+            <a id="about" asp-controller="About">About</a>
+        </div>
+        <h3 id="tagline">The most accessible and efficient favicon editor</h3>
+    </header>
+    <hr />
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTimeOffset.Now.Year, <a href="https://www.billboga.com/">Bill Boga</a>.
+    </footer>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,82 @@
+.color {
+    display: inline-block;
+    font-size: 0px;
+    overflow: hidden;
+    padding-bottom: 20%;
+    width: 20%;
+}
+
+.colors {
+    list-style-type: none;
+    padding: 0px;
+}
+
+#custom-colors {
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+    padding: 0px;
+    text-align: center;
+}
+
+    #custom-colors .custom-color {
+        float: left;
+        padding: 1em;
+        width: calc(100% / 6);
+    }
+
+        #custom-colors .custom-color .color-picker {
+            display: inline-block;
+            width: 100%;
+        }
+
+.swatch {
+    line-height: 0px;
+    margin-bottom: 0.5em;
+    padding: 0px;
+}
+
+    .swatch:hover {
+        box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+        transform: scale(1.1);
+    }
+
+.swatch-container {
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+    .swatch-container > li {
+        float: left;
+        margin-bottom: 1em;
+        padding: 0.5em;
+        text-align: center;
+        width: 25%;
+    }
+
+        .swatch-container > li:first-child:nth-last-child(1) {
+            width: 100%;
+        }
+
+        .swatch-container > li:first-child:nth-last-child(2),
+        .swatch-container > li:first-child:nth-last-child(2) ~ li {
+            width: 50%;
+        }
+
+        .swatch-container > li:first-child:nth-last-child(3),
+        .swatch-container > li:first-child:nth-last-child(3) ~ li {
+            width: calc(100% / 3);
+        }
+
+@media (max-width: 768px) {
+    #custom-colors .custom-color {
+        flex: 1 1 100%;
+    }
+
+    .swatch-container > li {
+        flex: 1 1 100%;
+    }
+}

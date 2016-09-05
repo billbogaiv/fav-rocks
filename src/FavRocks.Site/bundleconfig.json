@@ -1,0 +1,20 @@
+﻿[
+    {
+        "outputFileName": "wwwroot/css/site.min.css",
+        "inputFiles": [
+            "wwwroot/css/site.css"
+        ]
+    },
+    {
+        "outputFileName": "wwwroot/css/home/index.min.css",
+        "inputFiles": [
+            "wwwroot/css/home/index.css"
+        ]
+    },
+    {
+        "outputFileName": "wwwroot/css/color-swatches/index.min.css",
+        "inputFiles": [
+            "wwwroot/css/color-swatches/index.css"
+        ]
+    }
+]
