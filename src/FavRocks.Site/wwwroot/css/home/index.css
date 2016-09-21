@@ -241,6 +241,7 @@ label.color-selector-ui:nth-of-type(6) {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
+    transform: rotate(0deg);
     width: 33vw;
 }
 
